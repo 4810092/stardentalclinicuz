@@ -223,7 +223,8 @@
     const img = new Image();
     img.src = `gallery/photo${index}.jpg`;
     img.alt = `Клиника ${index}`;
-    img.style = "flex: 0 0 auto; height: 200px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-right: 1rem;";
+    img.style = "flex: 0 0 auto; height: 200px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-right: 1rem; cursor: pointer;";
+    img.onclick = () => showModal(img.src);
     img.onload = () => {
       gallery.appendChild(img);
       index++;
@@ -231,6 +232,8 @@
     };
   }
   tryLoadNext();
+
+
 </script>
 </section>
 
@@ -325,5 +328,68 @@ window.addEventListener('DOMContentLoaded', () => {
   loadPrices(document.getElementById('langSwitcher').value);
 });
 </script>
+
+<script>
+function showModal(src) {
+  const overlay = document.createElement('div');
+  overlay.id = 'image-modal';
+  overlay.style = `
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); display: flex;
+    align-items: center; justify-content: center;
+    z-index: 1000; flex-direction: column; color: white;
+  `;
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.style = 'max-width: 90%; max-height: 80%; border-radius: 8px; box-shadow: 0 0 10px #000';
+
+  const controls = document.createElement('div');
+  controls.style = 'margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;';
+
+  const close = document.createElement('button');
+  close.innerText = '✖';
+  close.style = 'font-size: 1.5rem; background: none; border: none; color: white; cursor: pointer;';
+  close.onclick = () => overlay.remove();
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      document.body.removeChild(overlay);
+    }
+  });
+  const prev = document.createElement('button');
+  prev.innerText = '←';
+  prev.style = close.style;
+
+  const next = document.createElement('button');
+  next.innerText = '→';
+  next.style = close.style;
+
+  let currentIndex = parseInt(src.match(/photo(\d+)\.jpg/)[1]);
+
+  prev.onclick = () => {
+    if (currentIndex > 1) {
+      currentIndex--;
+      img.src = `gallery/photo${currentIndex}.jpg`;
+    }
+  };
+  next.onclick = () => {
+    const test = new Image();
+    test.src = `gallery/photo${currentIndex + 1}.jpg`;
+    test.onload = () => {
+      currentIndex++;
+      img.src = test.src;
+    };
+  };
+
+  controls.appendChild(prev);
+  controls.appendChild(close);
+  controls.appendChild(next);
+  overlay.appendChild(img);
+  overlay.appendChild(controls);
+  document.body.appendChild(overlay);
+}
+</script>
+
+  
 </body>
 </html>
