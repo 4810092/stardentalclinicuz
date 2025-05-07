@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name="description" content="Star Dental Clinic — стоматологическая клиника в Ташкенте. Лечение зубов, имплантация, протезирование, брекеты. Онлайн-запись.">
-    <meta name="keywords" content="стоматология Ташкент, Star Dental Clinic, имплантация зубов, лечение кариеса, брекеты, зубные коронки, отбеливание зубов">
+    <meta name="description" content="Star Dental Clinic — стоматологическая клиника в Ташкенте. Davolash, implantatsiya, protezlash, breketlar. Dental clinic in Tashkent: treatment, implants, braces. Запись онлайн.">
+    <meta name="keywords" content="стоматология Ташкент, Star Dental Clinic, имплантация зубов, лечение кариеса, брекеты, зубные коронки, отбеливание зубов, stomatologiya Toshkent, tish davolash, implantatsiya, protez, dental clinic Tashkent, teeth treatment, implants, braces">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Star Dental Clinic — стоматология в Ташкенте">
     <meta property="og:description" content="Стоматологические услуги: терапия, имплантация, ортодонтия. Запишитесь онлайн.">
@@ -11,7 +11,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Стоматология в Ташкенте — Star Dental Clinic</title>
+    <title>Стоматология | Stomatologiya | Dental Clinic — Star Dental Clinic Ташкент</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         * { box-sizing: border-box; }
@@ -114,8 +114,8 @@
             padding: 1rem;
             font-size: 0.9rem;
         }
-    a:hover img { transform: scale(1.2); }
-    a {
+        a:hover img { transform: scale(1.2); }
+        a {
             color: #007BFF;
             text-decoration: none;
         }
@@ -123,124 +123,98 @@
             color: #0056b3;
             text-decoration: underline;
         }
-    @media (max-width: 768px) {
-    header {
-        padding: 3rem 1rem;
-    }
-    header h1 {
-        font-size: 1.75rem;
-    }
-    header p {
-        font-size: 1rem;
-    }
-    nav {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    .services {
-        flex-direction: column;
-        align-items: center;
-    }
-    .btn, .btn-primary {
-        width: 100%;
-        text-align: center;
-    }
-    .contact-info, .review, section {
-        padding: 1.5rem 1rem;
-    }
-    .reviews div {
-        height: 500px;
-    }
-    #contact div {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
-    }
-    #contact a img {
-        width: 20px;
-        height: 20px;
-    }
-}
-    header p { font-size: 1rem; margin-bottom: 1rem; }
-    nav {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    .services {
-        flex-direction: column;
-        align-items: center;
-    }
-    .btn, .btn-primary {
-        width: 100%;
-        text-align: center;
-    }
-    .contact-info, .review, section {
-        padding: 1.5rem 1rem;
-    }
-    .reviews div {
-        height: 500px;
-    }
-}
-</style>
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn, .btn-primary {
+                width: 100%;
+                text-align: center;
+            }
+            header {
+                padding: 3rem 1rem;
+            }
+            header h1 {
+                font-size: 1.75rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            section {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
+<div style="text-align: right; padding: 0.5rem 1rem;">
+  <select id="langSwitcher" onchange="switchLang(this.value)">
+    <option value="ru">Рус</option>
+    <option value="uz">O'z</option>
+    <option value="en">Eng</option>
+  </select>
+</div>
 <header>
-    <h1>Стоматология Star Dental Clinic в Ташкенте</h1>
-    <p>Современная стоматология с индивидуальным подходом</p>
-    <a class="btn btn-primary" href="https://n1323668.alteg.io/" target="_blank">Онлайн-запись</a>
+    <h1 data-i18n data-i18n-ru="Стоматология Star Dental Clinic в Ташкенте" data-i18n-uz="Toshkentdagi Star Dental Clinic stomatologiyasi" data-i18n-en="Star Dental Clinic in Tashkent">Стоматология Star Dental Clinic в Ташкенте</h1>
+    <p data-i18n data-i18n-ru="Современная стоматология с индивидуальным подходом" data-i18n-uz="Zamonaviy va shaxsiy yondashuvga ega stomatologiya" data-i18n-en="Modern dentistry with a personal approach">Современная стоматология с индивидуальным подходом</p>
+    <a class="btn btn-primary" href="https://n1323668.alteg.io/" target="_blank" data-i18n data-i18n-ru="Онлайн-запись" data-i18n-uz="Onlayn yozilish" data-i18n-en="Online appointment">Онлайн-запись</a>
 </header>
 
 <nav>
-    <a href="#about">О нас</a>
-    <a href="#services">Услуги</a>
-    <a href="#prices">Цены</a>
-    <a href="#reviews">Отзывы</a>
-    <a href="#contact">Контакты</a>
-    <a class="nav-cta" href="https://n1323668.alteg.io/" target="_blank">Записаться</a>
+    <a href="#about" data-i18n data-i18n-ru="О нас" data-i18n-uz="Biz haqimizda" data-i18n-en="About us">О нас</a>
+    <a href="#services" data-i18n data-i18n-ru="Услуги" data-i18n-uz="Xizmatlar" data-i18n-en="Services">Услуги</a>
+    <a href="#prices" data-i18n data-i18n-ru="Цены" data-i18n-uz="Narxlar" data-i18n-en="Prices">Цены</a>
+    <a href="#reviews" data-i18n data-i18n-ru="Отзывы" data-i18n-uz="Sharhlar" data-i18n-en="Reviews">Отзывы</a>
+    <a href="#contact" data-i18n data-i18n-ru="Контакты" data-i18n-uz="Bog‘lanish" data-i18n-en="Contacts">Контакты</a>
+    <a class="nav-cta" href="https://n1323668.alteg.io/" target="_blank" data-i18n data-i18n-ru="Записаться" data-i18n-uz="Yozilish" data-i18n-en="Book now">Записаться</a>
 </nav>
 
 <section id="about">
-    <h2>О клинике Star Dental</h2>
-    <p>Star Dental Clinic — современная стоматологическая клиника в Ташкенте, специализирующаяся на терапевтической, ортопедической, хирургической и ортодонтической стоматологии. Мы используем инновационные технологии, чтобы обеспечить высокое качество и комфорт нашим пациентам.</p>
+    <h2 data-i18n data-i18n-ru="О клинике Star Dental" data-i18n-uz="Star Dental klinikasi haqida" data-i18n-en="About Star Dental Clinic">О клинике Star Dental</h2>
+    <p data-i18n data-i18n-ru="Star Dental Clinic — современная стоматологическая клиника в Ташкенте, специализирующаяся на терапевтической, ортопедической, хирургической и ортодонтической стоматологии. Мы используем инновационные технологии, чтобы обеспечить высокое качество и комфорт нашим пациентам." data-i18n-uz="Star Dental Clinic — Toshkentdagi zamonaviy stomatologik klinika. Terapevtik, ortopedik, xirurgik va ortodontik davolash xizmatlarini taklif etadi. Biz zamonaviy texnologiyalar orqali bemorlarga yuqori sifat va qulaylik taqdim etamiz." data-i18n-en="Star Dental Clinic is a modern dental clinic in Tashkent, specializing in therapeutic, orthopedic, surgical, and orthodontic dentistry. We use innovative technologies to ensure high quality and comfort for our patients.">Star Dental Clinic — современная стоматологическая клиника в Ташкенте, специализирующаяся на терапевтической, ортопедической, хирургической и ортодонтической стоматологии. Мы используем инновационные технологии, чтобы обеспечить высокое качество и комфорт нашим пациентам.</p>
 </section>
 
 <section id="services">
-    <h2>Стоматологические услуги</h2>
+    <h2 data-i18n data-i18n-ru="Стоматологические услуги" data-i18n-uz="Stomatologik xizmatlar" data-i18n-en="Dental Services">Стоматологические услуги</h2>
     <div class="services">
         <div class="service">
-            <h3>Терапия</h3>
-            <p>Лечение кариеса, реставрация, депульпация.</p>
+            <h3 data-i18n data-i18n-ru="Терапия" data-i18n-uz="Terapeya" data-i18n-en="Therapy">Терапия</h3>
+            <p data-i18n data-i18n-ru="Лечение кариеса, реставрация, депульпация." data-i18n-uz="Kariesni davolash, tiklash, asabni olib tashlash." data-i18n-en="Caries treatment, restoration, pulp removal.">Лечение кариеса, реставрация, депульпация.</p>
         </div>
         <div class="service">
-            <h3>Протезирование</h3>
-            <p>Коронки, виниры, мосты, съемные протезы.</p>
+            <h3 data-i18n data-i18n-ru="Протезирование" data-i18n-uz="Protezlash" data-i18n-en="Prosthetics">Протезирование</h3>
+            <p data-i18n data-i18n-ru="Коронки, виниры, мосты, съемные протезы." data-i18n-uz="Kronalar, vinirlar, ko‘priklar, olinadigan protezlar." data-i18n-en="Crowns, veneers, bridges, removable dentures.">Коронки, виниры, мосты, съемные протезы.</p>
         </div>
         <div class="service">
-            <h3>Хирургия</h3>
-            <p>Удаление зубов, имплантация, гингивопластика.</p>
+            <h3 data-i18n data-i18n-ru="Хирургия" data-i18n-uz="Xirurgiya" data-i18n-en="Surgery">Хирургия</h3>
+            <p data-i18n data-i18n-ru="Удаление зубов, имплантация, гингивопластика." data-i18n-uz="Tishni olib tashlash, implantatsiya, milk plastikasi." data-i18n-en="Tooth extraction, implantation, gingivoplasty.">Удаление зубов, имплантация, гингивопластика.</p>
         </div>
         <div class="service">
-            <h3>Ортодонтия</h3>
-            <p>Брекеты, элайнеры Clearsmile.</p>
+            <h3 data-i18n data-i18n-ru="Ортодонтия" data-i18n-uz="Ortodontiya" data-i18n-en="Orthodontics">Ортодонтия</h3>
+            <p data-i18n data-i18n-ru="Брекеты, элайнеры Clearsmile." data-i18n-uz="Breketlar, Clearsmile e-laynerlar." data-i18n-en="Braces, Clearsmile aligners.">Брекеты, элайнеры Clearsmile.</p>
         </div>
     </div>
 </section>
 
 <section id="prices">
-    <h2>Цены на стоматологические услуги</h2>
+    <h2 data-i18n data-i18n-ru="Цены на стоматологические услуги" data-i18n-uz="Stomatologik xizmatlar narxlari" data-i18n-en="Prices for dental services">Цены на стоматологические услуги</h2>
     <ul>
-        <li>Консультация — <strong>100 000 сум</strong></li>
-        <li>Лечение кариеса — <strong>от 450 000 сум</strong></li>
-        <li>Металлокерамическая коронка — <strong>950 000 сум</strong></li>
-        <li>Имплантация 1 зуба — <strong>от 3 200 000 сум</strong></li>
-        <li>Брекеты (1 челюсть) — <strong>от 5 500 000 сум</strong></li>
+        <li data-i18n data-i18n-ru="Консультация — <strong>100 000 сум</strong>" data-i18n-uz="Konsultatsiya — <strong>100 000 so‘m</strong>" data-i18n-en="Consultation — <strong>100,000 UZS</strong>">Консультация — <strong>100 000 сум</strong></li>
+        <li data-i18n data-i18n-ru="Лечение кариеса — <strong>от 450 000 сум</strong>" data-i18n-uz="Kariesni davolash — <strong>450 000 so‘mdan</strong>" data-i18n-en="Caries treatment — <strong>from 450,000 UZS</strong>">Лечение кариеса — <strong>от 450 000 сум</strong></li>
+        <li data-i18n data-i18n-ru="Металлокерамическая коронка — <strong>950 000 сум</strong>" data-i18n-uz="Metall-keramika krona — <strong>950 000 so‘m</strong>" data-i18n-en="Metal-ceramic crown — <strong>950,000 UZS</strong>">Металлокерамическая коронка — <strong>950 000 сум</strong></li>
+        <li data-i18n data-i18n-ru="Имплантация 1 зуба — <strong>от 3 200 000 сум</strong>" data-i18n-uz="1 dona tish implantatsiyasi — <strong>3 200 000 so‘mdan</strong>" data-i18n-en="Single tooth implantation — <strong>from 3,200,000 UZS</strong>">Имплантация 1 зуба — <strong>от 3 200 000 сум</strong></li>
+        <li data-i18n data-i18n-ru="Брекеты (1 челюсть) — <strong>от 5 500 000 сум</strong>" data-i18n-uz="Breketlar (1 jag‘) — <strong>5 500 000 so‘mdan</strong>" data-i18n-en="Braces (1 jaw) — <strong>from 5,500,000 UZS</strong>">Брекеты (1 челюсть) — <strong>от 5 500 000 сум</strong></li>
     </ul>
 </section>
 
 <section class="reviews" id="reviews">
-    <h2>Отзывы о стоматологии Star Dental Clinic</h2>
+    <h2 data-i18n data-i18n-ru="Отзывы о стоматологии Star Dental Clinic" data-i18n-uz="Star Dental Clinic stomatologiyasi haqida fikrlar" data-i18n-en="Reviews of Star Dental Clinic">Отзывы о стоматологии Star Dental Clinic</h2>
     <div style="width:100%;max-width:700px;height:800px;margin:0 auto;overflow:hidden;position:relative;">
       <iframe style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box" 
               src="https://yandex.ru/maps-reviews-widget/49738156237?comments">
@@ -252,15 +226,14 @@
     </div>
 </section>
 
-
 <section id="contact">
-    <h2>Контакты стоматологической клиники</h2>
-    <p><strong>Телефон:</strong> <a href="tel:+998909584154">+998 (90) 958-41-54</a></p>
-    <p><strong>Адрес:</strong> <a href="https://yandex.uz/maps/-/CHrKmB~z" target="_blank">Узбекистан, г. Ташкент, Юнусабадский район, ул. Шарафабад, 1</a></p>
-    <p><strong>Время работы:</strong> Пн–Сб 09:00–18:00</p>
+    <h2 data-i18n data-i18n-ru="Контакты стоматологической клиники" data-i18n-uz="Stomatologik klinika bilan bog‘lanish" data-i18n-en="Contact the Dental Clinic">Контакты стоматологической клиники</h2>
+    <p><strong data-i18n data-i18n-ru="Телефон:" data-i18n-uz="Telefon:" data-i18n-en="Phone:">Телефон:</strong> <a href="tel:+998909584154">+998 (90) 958-41-54</a></p>
+    <p><strong data-i18n data-i18n-ru="Адрес:" data-i18n-uz="Manzil:" data-i18n-en="Address:">Адрес:</strong> <a href="https://yandex.uz/maps/-/CHrKmB~z" target="_blank">Узбекистан, г. Ташкент, Юнусабадский район, ул. Шарафабад, 1</a></p>
+    <p><strong data-i18n data-i18n-ru="Время работы:" data-i18n-uz="Ish vaqti:" data-i18n-en="Working hours:">Время работы:</strong> <span data-i18n data-i18n-ru="Пн–Сб 09:00–18:00" data-i18n-uz="Du–Sh 09:00–18:00" data-i18n-en="Mon–Sat 09:00–18:00">Пн–Сб 09:00–18:00</span></p>
     <div style="display: flex; gap: 1rem; align-items: center; margin: 1.5rem 0; transition: opacity 0.3s ease;">
         <a href="https://t.me/stardentalclinicuz" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: #007BFF; transition: transform 0.3s ease;">
-            <img src="icons/telegram.png" alt="Telegram" style="width: 24px; height: 24px; margin-right: 0.5rem;"> @stardentalclinicuz
+            <img src="icons/telegram.png" alt="Telegram" style="width: 24px; height: 24px; margin-right: 0.5rem;"> @StarDentalClinicUz
         </a>
         <a href="https://www.instagram.com/stardentalclinic.uz" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: #007BFF;">
             <img src="icons/instagram.png" alt="Instagram" style="width: 24px; height: 24px; margin-right: 0.5rem;"> Instagram
@@ -269,10 +242,18 @@
     <p>
         <a class="btn btn-primary" href="https://n1323668.alteg.io/" target="_blank">Онлайн-запись</a>
     </p>
-    
 </section>
 
-    
+<footer>
+    <p data-i18n data-i18n-ru="© 2025 Star Dental Clinic. Все права защищены." data-i18n-uz="© 2025 Star Dental Clinic. Barcha huquqlar himoyalangan." data-i18n-en="© 2025 Star Dental Clinic. All rights reserved.">© 2025 Star Dental Clinic. Все права защищены.</p>
 </footer>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = el.getAttribute('data-i18n-' + lang);
+    if (val) el.innerHTML = val;
+  });
+}
+</script>
 </body>
 </html>
