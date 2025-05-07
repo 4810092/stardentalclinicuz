@@ -1,0 +1,32 @@
+[
+  {
+    "ru": "Консультация",
+    "uz": "Konsultatsiya",
+    "en": "Consultation",
+    "price": "100000"
+  },
+  {
+    "ru": "Лечение кариеса",
+    "uz": "Kariesni davolash",
+    "en": "Caries treatment",
+    "price": "450000"
+  },
+  {
+    "ru": "Металлокерамическая коронка",
+    "uz": "Metall-keramika krona",
+    "en": "Metal-ceramic crown",
+    "price": "950000"
+  },
+  {
+    "ru": "Имплантация 1 зуба",
+    "uz": "1 dona tish implantatsiyasi",
+    "en": "Single tooth implantation",
+    "price": "3200000"
+  },
+  {
+    "ru": "Брекеты (1 челюсть)",
+    "uz": "Breketlar (1 jag‘)",
+    "en": "Braces (1 jaw)",
+    "price": "5500000"
+  }
+]

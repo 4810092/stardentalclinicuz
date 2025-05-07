@@ -236,13 +236,26 @@
 
 <section id="prices">
     <h2 data-i18n data-i18n-ru="Цены на стоматологические услуги" data-i18n-uz="Stomatologik xizmatlar narxlari" data-i18n-en="Prices for dental services">Цены на стоматологические услуги</h2>
-    <ul>
-        <li data-i18n data-i18n-ru="Консультация — <strong>100 000 сум</strong>" data-i18n-uz="Konsultatsiya — <strong>100 000 so‘m</strong>" data-i18n-en="Consultation — <strong>100,000 UZS</strong>">Консультация — <strong>100 000 сум</strong></li>
-        <li data-i18n data-i18n-ru="Лечение кариеса — <strong>от 450 000 сум</strong>" data-i18n-uz="Kariesni davolash — <strong>450 000 so‘mdan</strong>" data-i18n-en="Caries treatment — <strong>from 450,000 UZS</strong>">Лечение кариеса — <strong>от 450 000 сум</strong></li>
-        <li data-i18n data-i18n-ru="Металлокерамическая коронка — <strong>950 000 сум</strong>" data-i18n-uz="Metall-keramika krona — <strong>950 000 so‘m</strong>" data-i18n-en="Metal-ceramic crown — <strong>950,000 UZS</strong>">Металлокерамическая коронка — <strong>950 000 сум</strong></li>
-        <li data-i18n data-i18n-ru="Имплантация 1 зуба — <strong>от 3 200 000 сум</strong>" data-i18n-uz="1 dona tish implantatsiyasi — <strong>3 200 000 so‘mdan</strong>" data-i18n-en="Single tooth implantation — <strong>from 3,200,000 UZS</strong>">Имплантация 1 зуба — <strong>от 3 200 000 сум</strong></li>
-        <li data-i18n data-i18n-ru="Брекеты (1 челюсть) — <strong>от 5 500 000 сум</strong>" data-i18n-uz="Breketlar (1 jag‘) — <strong>5 500 000 so‘mdan</strong>" data-i18n-en="Braces (1 jaw) — <strong>from 5,500,000 UZS</strong>">Брекеты (1 челюсть) — <strong>от 5 500 000 сум</strong></li>
-    </ul>
+    <ul id="price-list"></ul>
+    <script>
+      fetch('prices.json')
+        .then(response => response.json())
+        .then(data => {
+          const list = document.getElementById('price-list');
+          const lang = document.getElementById('langSwitcher').value || 'ru';
+          const currencyMap = {
+            ru: 'сум',
+            uz: 'so‘m',
+            en: 'UZS'
+          };
+          list.innerHTML = '';
+          data.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `${item[lang]} — <strong>${item.price} ${currencyMap[lang]}</strong>`;
+            list.appendChild(li);
+          });
+        });
+    </script>
 </section>
 
 <section class="reviews" id="reviews">
@@ -280,12 +293,37 @@
     <p data-i18n data-i18n-ru="© 2025 Star Dental Clinic. Все права защищены." data-i18n-uz="© 2025 Star Dental Clinic. Barcha huquqlar himoyalangan." data-i18n-en="© 2025 Star Dental Clinic. All rights reserved.">© 2025 Star Dental Clinic. Все права защищены.</p>
 </footer>
 <script>
+function loadPrices(lang) {
+  fetch('prices.json')
+    .then(response => response.json())
+    .then(data => {
+      const list = document.getElementById('price-list');
+      const currencyMap = {
+        ru: 'сум',
+        uz: 'so‘m',
+        en: 'UZS'
+      };
+      list.innerHTML = '';
+      data.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `${item[lang]} — <strong>${item.price} ${currencyMap[lang]}</strong>`;
+        list.appendChild(li);
+      });
+    });
+}
+
 function switchLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const val = el.getAttribute('data-i18n-' + lang);
     if (val) el.innerHTML = val;
   });
+  loadPrices(lang);
 }
+
+// Загружаем цены при первоначальной загрузке страницы
+window.addEventListener('DOMContentLoaded', () => {
+  loadPrices(document.getElementById('langSwitcher').value);
+});
 </script>
 </body>
 </html>
