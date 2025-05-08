@@ -9,7 +9,7 @@
     "ru": "Лечение кариеса",
     "uz": "Kariesni davolash",
     "en": "Caries treatment",
-    "price": "450000"
+    "price": "550000"
   },
   {
     "ru": "Металлокерамическая коронка",
@@ -21,12 +21,18 @@
     "ru": "Имплантация 1 зуба",
     "uz": "1 dona tish implantatsiyasi",
     "en": "Single tooth implantation",
-    "price": "3200000"
+    "price": "3700000"
   },
   {
     "ru": "Брекеты (1 челюсть)",
     "uz": "Breketlar (1 jag‘)",
     "en": "Braces (1 jaw)",
-    "price": "5500000"
+    "price": "6500000"
+  },
+  {
+    "ru": "Виниры",
+    "uz": "Vinirlar",
+    "en": "Veneers",
+    "price": "4200000"
   }
 ]
