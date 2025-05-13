@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Стоматология | Stomatologiya | Dental Clinic — Star Dental Clinic Ташкент</title>
+    <link rel="canonical" href="https://stardentalclinic.uz/">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -28,152 +29,7 @@
     }
     </script>
     <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="120x120">
-    <style>
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: #333;
-        }
-        header {
-            background: url('hero-image.png') center center no-repeat;
-            background-size: cover;
-            min-height: 300px;
-            width: 100%;
-            text-align: center;
-            color: white;
-        }
-        header h1 {
-            font-size: 3rem;
-            margin: 0 0 1rem;
-        }
-        header p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        .btn {
-            padding: 1rem 2rem;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-        .btn-primary {
-            display: inline-block;
-            margin-top: 1rem;
-            background-color: #28a745;
-            text-decoration: none;
-        }
-        nav {
-            background-color: #f8f8f8;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            padding: 1rem;
-            border-bottom: 1px solid #ddd;
-        }
-        nav a {
-            color: #007BFF;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav .nav-cta {
-            background-color: #28a745;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-        }
-        section {
-            padding: 3rem 2rem;
-            max-width: 1000px;
-            margin: auto;
-        }
-        h2 { text-align: center; margin-bottom: 2rem; }
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-        .service {
-            flex: 1 1 250px;
-            border: 1px solid #eee;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .reviews {
-            background-color: #f9f9f9;
-            padding: 3rem 2rem;
-        }
-        .review {
-            max-width: 700px;
-            margin: 1rem auto;
-            font-style: italic;
-        }
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .contact-form button {
-            padding: 0.75rem 2rem;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        footer {
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
-        }
-        a:hover img { transform: scale(1.2); }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: center;
-            }
-            .services {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn, .btn-primary {
-                width: 100%;
-                text-align: center;
-            }
-            header {
-                padding: 3rem 1rem;
-            }
-            header h1 {
-                font-size: 1.75rem;
-            }
-            header p {
-                font-size: 1rem;
-            }
-            section {
-                padding: 1.5rem 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div style="text-align: right; padding: 0.5rem 1rem;">
@@ -270,6 +126,7 @@
     const img = new Image();
     img.src = `gallery/photo${index}.jpg`;
     img.alt = `Клиника ${index}`;
+    img.loading = "lazy";
     img.style = "flex: 0 0 auto; height: 200px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-right: 1rem; cursor: pointer;";
     img.onclick = () => showModal(img.src);
     img.onload = () => {
