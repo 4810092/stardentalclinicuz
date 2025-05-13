@@ -126,7 +126,6 @@
     const img = new Image();
     img.src = `gallery/photo${index}.jpg`;
     img.alt = `Клиника ${index}`;
-    img.loading = "lazy";
     img.style = "flex: 0 0 auto; height: 200px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-right: 1rem; cursor: pointer;";
     img.onclick = () => showModal(img.src);
     img.onload = () => {
@@ -197,7 +196,7 @@
     </p>
 </section>
  <section style="text-align: center; padding: 2rem 1rem;">
-    <h2>Полезные материалы</h2>
+    <h2 data-i18n data-i18n-ru="Полезные материалы" data-i18n-uz="Foydali materiallar" data-i18n-en="Helpful Articles">Полезные материалы</h2>
     <p><a href="/implantation-guide.html" style="text-decoration: none; color: #007BFF;">Имплантация зубов в Ташкенте — что важно знать перед процедурой</a></p>
   </section>
 <footer>
