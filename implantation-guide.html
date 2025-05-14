@@ -95,6 +95,16 @@ function switchLang(lang) {
     if (val) el.innerHTML = val;
   });
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('lang') || 'ru';
+  document.getElementById('langSwitcher').value = saved;
+  switchLang(saved);
+  document.getElementById('langSwitcher').addEventListener('change', e => {
+    localStorage.setItem('lang', e.target.value);
+    switchLang(e.target.value);
+  });
+});
 </script>
 </article>
 </body>
