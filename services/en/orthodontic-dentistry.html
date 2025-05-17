@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="referrer" content="strict-origin" />
+
+  <title>Orthodontic Dentistry in Tashkent — Braces and Aligners | Star Dental Clinic</title>
+  <meta name="description" content="Orthodontic dentistry in Tashkent — teeth straightening, braces, aligners. Consultation, diagnosis and treatment at Star Dental Clinic." />
+  <meta name="keywords" content="orthodontics Tashkent, braces Tashkent, aligners Tashkent, bite correction, Star Dental Clinic, adult orthodontist, children orthodontist" />
+
+  <link rel="canonical" href="https://stardentalclinic.uz/services/en/orthodontic-dentistry.html" />
+  <link rel="alternate" hreflang="ru" href="https://stardentalclinic.uz/services/ru/orthodontic-dentistry.html" />
+  <link rel="alternate" hreflang="uz" href="https://stardentalclinic.uz/services/uz/orthodontic-dentistry.html" />
+  <link rel="alternate" hreflang="en" href="https://stardentalclinic.uz/services/en/orthodontic-dentistry.html" />
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Orthodontic Dentistry in Tashkent — Star Dental Clinic" />
+  <meta property="og:description" content="Teeth alignment, braces and aligners in Tashkent. Book an appointment online with Star Dental Clinic." />
+  <meta property="og:url" content="https://stardentalclinic.uz/services/en/orthodontic-dentistry.html" />
+  <meta property="og:image" content="https://stardentalclinic.uz/images/orthodontics.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Orthodontic Dentistry — Star Dental Clinic" />
+  <meta name="twitter:description" content="Straighten your teeth comfortably with braces, aligners and retainers. Modern orthodontics in Tashkent." />
+  <meta name="twitter:image" content="https://stardentalclinic.uz/images/orthodontics.jpg" />
+
+  <!-- JSON-LD structured data (added later) -->
+</head>
+<body>
+  <div style="text-align: right; padding: 0.5rem 1rem;">
+    <select id="langSwitcher" onchange="switchLang(this.value)">
+      <option value="ru">Рус</option>
+      <option value="uz">O‘z</option>
+      <option value="en" selected>Eng</option>
+    </select>
+  </div>
+  <nav style="padding: 1rem; background: #f8f8f8; text-align: center;">
+    <a href="/" style="font-weight: bold; color: #007BFF; text-decoration: none;">← Back to main page</a>
+  </nav>
+  <script>
+    (function() {
+      const langMatch = window.location.pathname.match(/\/services\/(ru|uz|en)/);
+      if (langMatch) {
+        localStorage.setItem('lang', langMatch[1]);
+      }
+    })();
+    function switchLang(lang) {
+      const path = window.location.pathname;
+      const cleanPath = path.replace(/^\/services\/(ru|uz|en)/, "");
+      window.location.href = "/services/" + lang + cleanPath;
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentLang = localStorage.getItem('lang');
+      const select = document.getElementById('langSwitcher');
+      if (currentLang && select) {
+        select.value = currentLang;
+      }
+    });
+  </script>
+
+  <main>
+    <article style="max-width:1000px; margin:auto; padding:2rem; font-family:sans-serif; line-height:1.6;">
+      <h1>Orthodontic Dentistry</h1>
+      <p>Star Dental Clinic in Tashkent offers modern solutions for straightening teeth: braces, aligners and retainers. Suitable for both adults and children.</p>
+
+      <h2>Our Services</h2>
+      <ul>
+        <li><strong>Orthodontic consultation:</strong> digital diagnostics, 3D planning and treatment roadmap.</li>
+        <li><strong>Braces:</strong>
+          <ul>
+            <li>Metal — durable and reliable.</li>
+            <li>Ceramic and sapphire — discreet yet effective.</li>
+            <li>Self-ligating — modern and comfortable with fewer visits.</li>
+          </ul>
+        </li>
+        <li><strong>Aligners:</strong> transparent removable trays. Aesthetic and convenient.</li>
+        <li><strong>Children’s treatment:</strong> trainers, aligners, orthotropic methods. The earlier — the better.</li>
+        <li><strong>Retention:</strong> preserve the results with custom retainers and guidance.</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>At what age can braces be applied?</h3>
+      <p>Usually from 11–13 years, after permanent teeth have erupted.</p>
+
+      <h3>How long does orthodontic treatment take?</h3>
+      <p>Typically between 12 to 24 months, depending on the complexity.</p>
+
+      <h3>Which is better: aligners or braces?</h3>
+      <p>Aligners are great for mild to moderate cases. Braces are more effective for complex misalignments.</p>
+
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:2rem;">
+        <a href="https://n1323668.alteg.io/" target="_blank" style="flex:1; min-width:200px; text-align:center; padding:0.8rem 1.5rem; background:#28a745; color:white; text-decoration:none; border-radius:4px;">Book Appointment</a>
+        <a href="tel:+998909584154" style="flex:1; min-width:200px; text-align:center; padding:0.8rem 1.5rem; background:#007bff; color:white; text-decoration:none; border-radius:4px;">Call Us</a>
+      </div>
+    </article>
+  </main>
+
+  <footer style="text-align:center; padding:2rem; font-size:0.9rem; background:#f0f0f0;">
+    <p>© 2025 Star Dental Clinic. All rights reserved.</p>
+  </footer>
+</body>
+</html>
