@@ -56,7 +56,17 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stardentalclinic.uz/services/gnathology.html</loc>
+    <loc>https://stardentalclinic.uz/services/ru/gnathology.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stardentalclinic.uz/services/uz/gnathology.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stardentalclinic.uz/services/en/gnathology.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
