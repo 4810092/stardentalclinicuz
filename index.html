@@ -109,14 +109,19 @@
       <h3 data-i18n data-i18n-ru="Хирургическая стоматология" data-i18n-uz="Xirurgik stomatologiya" data-i18n-en="Surgical Dentistry">Хирургическая стоматология</h3>
       <p data-i18n data-i18n-ru="Удаление, имплантация, пластика — точно, безопасно, без боли." data-i18n-uz="Olib tashlash, implantatsiya, plastik — aniq, xavfsiz va og‘riqsiz." data-i18n-en="Extraction, implants, plastic surgery — precise, safe and painless.">Удаление, имплантация, пластика — точно, безопасно, без боли.</p>
     </a>
-    <a href="services/gnathology.html" class="service">
+<a href="#" onclick="goToLocalizedService('gnathology.html')" class="service">
       <h3 data-i18n data-i18n-ru="Гнатология" data-i18n-uz="Gnatologiya" data-i18n-en="Gnathology">Гнатология</h3>
       <p data-i18n data-i18n-ru="Когда болит не только зуб, но и челюсть, голова или шея — ищем и устраняем настоящую причину." data-i18n-uz="Og‘riq nafaqat tishda, balki jag‘, bosh yoki bo‘ynda bo‘lsa — biz asl sababni topamiz va yo‘q qilamiz." data-i18n-en="When not just your tooth hurts, but your jaw, head, or neck — we find and eliminate the real cause.">Когда болит не только зуб, но и челюсть, голова или шея — ищем и устраняем настоящую причину.</p>
     </a>
   </div>
 </section>
 
-
+<script>
+function goToLocalizedService(page) {
+  const lang = localStorage.getItem('lang') || 'ru';
+  location.href = `services/${lang}/${page}`;
+}
+</script>
 <section id="gallery">
     <h2 data-i18n data-i18n-ru="Фотогалерея клиники" data-i18n-uz="Klinika fotogalereyasi" data-i18n-en="Clinic Photo Gallery">Фотогалерея клиники</h2>
     <div id="gallery-scroll" style="display: flex; overflow-x: auto; gap: 1rem; padding: 1rem; scrollbar-width: thin;"></div>
