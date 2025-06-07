@@ -161,6 +161,35 @@
       data-i18n-uz="Yozilish" data-i18n-en="Book now">Записаться</a>
   </nav>
 
+  <section id="home-slider" class="slider">
+    <button class="prev">&larr;</button>
+    <img id="slider-image" src="gallery/photo1.jpg" alt="Clinic photo">
+    <button class="next">&rarr;</button>
+  </section>
+  <script>
+    (function () {
+      const images = [];
+      for (let i = 1; i <= 7; i++) images.push(`gallery/photo${i}.jpg`);
+      let index = 0;
+      const img = document.getElementById('slider-image');
+      const prev = document.querySelector('#home-slider .prev');
+      const next = document.querySelector('#home-slider .next');
+      function show() { img.src = images[index]; }
+      prev.addEventListener('click', () => {
+        index = (index - 1 + images.length) % images.length;
+        show();
+      });
+      next.addEventListener('click', () => {
+        index = (index + 1) % images.length;
+        show();
+      });
+      setInterval(() => {
+        index = (index + 1) % images.length;
+        show();
+      }, 5000);
+    })();
+  </script>
+
   <section id="about">
     <h2 data-i18n data-i18n-ru="О клинике" data-i18n-uz="Klinika haqida" data-i18n-en="About the Clinic">О клинике</h2>
     <p data-i18n
