@@ -1,6 +1,7 @@
-
 /* Основные стили сайта Star Dental Clinic */
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,12 +12,14 @@ body {
 }
 
 header {
-    background: url('hero-image.png') center center no-repeat;
-    background-size: cover;
+    display: flex;
+    align-items: center;      /* по вертикали */
+    justify-content: center;  /* по горизонтали */
     min-height: 300px;
-    width: 100%;
+    max-height: 400px;
+    background-color: #fff;
+    margin: 0 auto;
     text-align: center;
-    color: white;
 }
 
 header h1 {
@@ -29,43 +32,62 @@ header p {
     margin-bottom: 2rem;
 }
 
-.btn {
+
+.btn-outline {
     padding: 1rem 2rem;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    background-color: white;
+    color: #C8A038; /* золотой текст */
+    border: 2px solid #C8A038; /* золотая рамка */
+    border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
 }
 
-.btn-primary {
-    display: inline-block;
-    margin-top: 1rem;
-    background-color: #28a745;
-    text-decoration: none;
+.btn-outline:hover {
+    background-color: #C8A038; /* заливка золотом */
+    color: white; /* белый текст */
 }
 
 nav {
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
+    align-items: center; /* 🔹 Выравнивание по вертикали */
     gap: 2rem;
     padding: 1rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e0e0e0;
+    flex-wrap: wrap; /* На случай адаптива */
 }
 
 nav a {
-    color: #007BFF;
+    color: #C8A038;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center; /* 🔹 Центрирование текста внутри ссылок */
+    height: 100%; /* 🔹 Чтобы соответствовать высоте родителя */
 }
 
-nav .nav-cta {
-    background-color: #28a745;
-    color: white;
+
+nav .btn-outline {
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    font-size: 1rem;
+    border: 2px solid #C8A038;
+    color: #C8A038;
+    background-color: white;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+nav .btn-outline:hover {
+    background-color: #C8A038;
+    color: white;
 }
 
 section {
@@ -80,50 +102,51 @@ h2 {
 }
 
 .services {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .service {
-  position: relative;
-  width: 100%;
-  max-width: 250px;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1rem;
-  border-radius: 16px;
-  overflow: hidden;
-  color: white;
-  text-align: left;
-  text-decoration: none;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-radius: 16px;
+    overflow: hidden;
+    color: white;
+    text-align: left;
+    text-decoration: none;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service h3,
 .service p {
-  margin: 0;
-  z-index: 2;
+    margin: 0;
+    z-index: 2;
 }
 
 .service::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* затемнение */
-  z-index: 1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    /* затемнение */
+    z-index: 1;
 }
 
 .service:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -169,12 +192,13 @@ a:hover img {
 }
 
 a {
-    color: #007BFF;
+    color: #C8A038; /* фирменный золотой */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #0056b3;
+    color: #B3862C; /* темнее при наведении */
     text-decoration: underline;
 }
 
@@ -184,23 +208,30 @@ a:hover {
         gap: 0.5rem;
         align-items: center;
     }
+
     .services {
         flex-direction: column;
         align-items: center;
     }
-    .btn, .btn-primary {
+
+    .btn,
+    .btn-primary {
         width: 100%;
         text-align: center;
     }
+
     header {
         padding: 3rem 1rem;
     }
+
     header h1 {
         font-size: 1.75rem;
     }
+
     header p {
         font-size: 1rem;
     }
+
     section {
         padding: 1.5rem 1rem;
     }
