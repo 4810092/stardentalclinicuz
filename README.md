@@ -8,7 +8,6 @@
 
 - 📍 Адрес: г. Ташкент, ул. Шарафабад, 1
 - 📞 Телефон: +998 (90) 958-41-54
-- 📆 Онлайн-запись: [n1323668.alteg.io](https://n1323668.alteg.io/)
 - 📷 Instagram: [@stardentalclinic.uz](https://www.instagram.com/stardentalclinic.uz)
 - 📢 Telegram: [@stardentalclinicuz](https://t.me/stardentalclinicuz)
 
