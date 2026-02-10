@@ -1,8 +1,9 @@
 (function () {
   'use strict';
 
-  var MODAL_ID = 'bookingModal';
-  var BOOKING_URL = 'https://feedback.stardentalclinic.uz/';
+  var OVERLAY_ID = 'bookingOverlay';
+  var DIALOG_ID = 'bookingDialog';
+  var BOOKING_URL = 'https://feedback.stardentalclinic.uz/?embed=1';
   var PHONE_URL = 'tel:+998909584154';
   var DEFAULT_INSTAGRAM_URL = 'https://www.instagram.com/stardentalclinic.uz';
 
@@ -81,101 +82,97 @@
     }
   }
 
-  function buildModal() {
+  function buildBookingLayer() {
     var overlay = document.createElement('div');
-    overlay.className = 'booking-modal-overlay';
-    overlay.id = MODAL_ID;
+    overlay.className = 'booking-overlay';
+    overlay.id = OVERLAY_ID;
     overlay.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(overlay);
 
-    var modal = document.createElement('div');
-    modal.className = 'booking-modal';
-    modal.setAttribute('role', 'dialog');
-    modal.setAttribute('aria-modal', 'true');
-    modal.setAttribute('aria-labelledby', 'bookingModalTitle');
-
-    var header = document.createElement('div');
-    header.className = 'booking-modal__header';
-
-    var title = document.createElement('div');
-    title.className = 'booking-modal__title';
-    title.id = 'bookingModalTitle';
-    title.textContent = '\u041e\u043d\u043b\u0430\u0439\u043d-\u0437\u0430\u044f\u0432\u043a\u0430';
-
-    var close = document.createElement('button');
-    close.className = 'booking-modal__close';
-    close.type = 'button';
-    close.setAttribute('aria-label', '\u0417\u0430\u043a\u0440\u044b\u0442\u044c');
-    close.textContent = '\u2715';
+    var dialog = document.createElement('div');
+    dialog.className = 'booking-dialog';
+    dialog.id = DIALOG_ID;
+    dialog.setAttribute('role', 'dialog');
+    dialog.setAttribute('aria-modal', 'true');
+    dialog.setAttribute('aria-label', '\u0424\u043e\u0440\u043c\u0430 \u0437\u0430\u043f\u0438\u0441\u0438');
 
     var iframe = document.createElement('iframe');
-    iframe.className = 'booking-modal__iframe';
+    iframe.className = 'booking-dialog__iframe';
     iframe.src = BOOKING_URL;
     iframe.title = '\u0424\u043e\u0440\u043c\u0430 \u0437\u0430\u043f\u0438\u0441\u0438 Star Dental Clinic';
     iframe.loading = 'lazy';
 
-    header.appendChild(title);
-    header.appendChild(close);
-    modal.appendChild(header);
-    modal.appendChild(iframe);
-    overlay.appendChild(modal);
-    document.body.appendChild(overlay);
-
-    return overlay;
+    dialog.appendChild(iframe);
+    document.body.appendChild(dialog);
   }
 
-  function getOrCreateModal() {
-    return document.getElementById(MODAL_ID) || buildModal();
+  function ensureBookingLayer() {
+    if (!document.getElementById(OVERLAY_ID) || !document.getElementById(DIALOG_ID)) {
+      buildBookingLayer();
+    }
   }
 
-  function closeModal() {
-    var overlay = document.getElementById(MODAL_ID);
-    if (!overlay) {
+  function isBookingOpen() {
+    var overlay = document.getElementById(OVERLAY_ID);
+    var dialog = document.getElementById(DIALOG_ID);
+    return !!(overlay && dialog && overlay.classList.contains('is-open') && dialog.classList.contains('is-open'));
+  }
+
+  function closeBooking() {
+    var overlay = document.getElementById(OVERLAY_ID);
+    var dialog = document.getElementById(DIALOG_ID);
+
+    if (!overlay || !dialog) {
       return;
     }
 
     overlay.classList.remove('is-open');
+    dialog.classList.remove('is-open');
     overlay.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
+    document.body.classList.remove('booking-open');
   }
 
-  function openModal() {
-    var overlay = getOrCreateModal();
-    var closeButton = overlay.querySelector('.booking-modal__close');
+  function openBooking() {
+    ensureBookingLayer();
+
+    var overlay = document.getElementById(OVERLAY_ID);
+    var dialog = document.getElementById(DIALOG_ID);
+    if (!overlay || !dialog) {
+      return;
+    }
 
     overlay.classList.add('is-open');
+    dialog.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
+    document.body.classList.add('booking-open');
+  }
 
-    if (closeButton) {
-      closeButton.focus();
+  function toggleBooking() {
+    if (isBookingOpen()) {
+      closeBooking();
+    } else {
+      openBooking();
     }
   }
 
   function bindModalEvents() {
+    var overlay = document.getElementById(OVERLAY_ID);
+    if (overlay) {
+      overlay.addEventListener('click', function () {
+        closeBooking();
+      });
+    }
+
     document.addEventListener('click', function (event) {
       if (event.target.closest('.booking-fab')) {
-        openModal();
+        toggleBooking();
         return;
-      }
-
-      if (event.target.closest('.booking-modal__close')) {
-        closeModal();
-        return;
-      }
-
-      var overlay = document.getElementById(MODAL_ID);
-      if (!overlay) {
-        return;
-      }
-
-      if (event.target === overlay) {
-        closeModal();
       }
     });
 
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        closeModal();
+      if (event.key === 'Escape' && isBookingOpen()) {
+        closeBooking();
       }
     });
   }
@@ -214,6 +211,7 @@
     });
 
     ensureBookingButtons(containers);
+    ensureBookingLayer();
     bindModalEvents();
   }
 
