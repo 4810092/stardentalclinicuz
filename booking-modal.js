@@ -3,7 +3,9 @@
 
   var OVERLAY_ID = 'bookingOverlay';
   var DIALOG_ID = 'bookingDialog';
+  var IFRAME_ID = 'bookingIframe';
   var BOOKING_URL = 'https://feedback.stardentalclinic.uz/?embed=1';
+  var FEEDBACK_ORIGIN = 'https://feedback.stardentalclinic.uz';
   var PHONE_URL = 'tel:+998909584154';
   var DEFAULT_INSTAGRAM_URL = 'https://www.instagram.com/stardentalclinic.uz';
 
@@ -98,6 +100,7 @@
 
     var iframe = document.createElement('iframe');
     iframe.className = 'booking-dialog__iframe';
+    iframe.id = IFRAME_ID;
     iframe.src = BOOKING_URL;
     iframe.title = '\u0424\u043e\u0440\u043c\u0430 \u0437\u0430\u043f\u0438\u0441\u0438 Star Dental Clinic';
     iframe.loading = 'lazy';
@@ -153,6 +156,49 @@
     } else {
       openBooking();
     }
+  }
+
+  function getBookingIframe() {
+    return document.getElementById(IFRAME_ID);
+  }
+
+  function bindIframeHeightEvents() {
+    window.addEventListener('message', function (event) {
+      if (event.origin !== FEEDBACK_ORIGIN) {
+        return;
+      }
+
+      var data = event.data;
+      if (!data || data.type !== 'feedback:height' || typeof data.height !== 'number') {
+        return;
+      }
+
+      var iframe = getBookingIframe();
+      if (!iframe) {
+        return;
+      }
+
+      var maxH = Math.floor(window.innerHeight * 0.9);
+      var h = Math.min(Math.max(280, Math.floor(data.height)), maxH);
+      iframe.style.height = h + 'px';
+    });
+
+    window.addEventListener('resize', function () {
+      var iframe = getBookingIframe();
+      if (!iframe) {
+        return;
+      }
+
+      var currentHeight = parseInt(iframe.style.height, 10);
+      if (Number.isNaN(currentHeight)) {
+        return;
+      }
+
+      var maxH = Math.floor(window.innerHeight * 0.9);
+      if (currentHeight > maxH) {
+        iframe.style.height = maxH + 'px';
+      }
+    });
   }
 
   function bindModalEvents() {
@@ -212,6 +258,7 @@
 
     ensureBookingButtons(containers);
     ensureBookingLayer();
+    bindIframeHeightEvents();
     bindModalEvents();
   }
 

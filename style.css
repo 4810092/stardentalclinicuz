@@ -402,14 +402,11 @@ body.booking-open {
     top: 50%;
     transform: translate(-50%, -50%);
     width: min(900px, calc(100vw - 32px));
-    height: min(720px, calc(100vh - 32px));
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 16px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
     z-index: 2100;
     display: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
 }
 
 .booking-dialog.is-open {
@@ -418,15 +415,19 @@ body.booking-open {
 
 .booking-dialog__iframe {
     width: 100%;
-    height: 100%;
+    height: 520px;
     border: 0;
     display: block;
+    background: transparent;
+    border-radius: 16px;
 }
 
 @media (max-width: 768px) {
     .booking-dialog {
         width: calc(100vw - 16px);
-        height: calc(100vh - 16px);
+    }
+
+    .booking-dialog__iframe {
         border-radius: 14px;
     }
 }
