@@ -6,8 +6,19 @@
   var IFRAME_ID = 'bookingIframe';
   var BOOKING_URL = 'https://feedback.stardentalclinic.uz/?embed=1';
   var FEEDBACK_ORIGIN = 'https://feedback.stardentalclinic.uz';
+  var METRIKA_COUNTER_ID = 106803946;
   var PHONE_URL = 'tel:+998909584154';
   var DEFAULT_INSTAGRAM_URL = 'https://www.instagram.com/stardentalclinic.uz';
+
+  function trackAnalyticsEvent(eventName, eventParams) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, eventParams || {});
+    }
+
+    if (typeof window.ym === 'function') {
+      window.ym(METRIKA_COUNTER_ID, 'reachGoal', eventName);
+    }
+  }
 
   function createFabButton(tagName, attrs, iconSrc, iconAlt) {
     var button = document.createElement(tagName);
@@ -148,6 +159,10 @@
     dialog.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
     document.body.classList.add('booking-open');
+    trackAnalyticsEvent('booking_modal_open', {
+      event_category: 'engagement',
+      event_label: window.location.pathname
+    });
   }
 
   function toggleBooking() {
@@ -213,6 +228,15 @@
       if (event.target.closest('.booking-fab')) {
         toggleBooking();
         return;
+      }
+
+      if (event.target.closest('.floating-buttons a[href^="tel:"]')) {
+        trackAnalyticsEvent('click_call', { event_category: 'contact' });
+        return;
+      }
+
+      if (event.target.closest('.floating-buttons a[href*="instagram.com"]')) {
+        trackAnalyticsEvent('click_instagram', { event_category: 'contact' });
       }
     });
 
