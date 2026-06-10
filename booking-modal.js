@@ -1,14 +1,10 @@
 (function () {
   'use strict';
 
-  var OVERLAY_ID = 'bookingOverlay';
-  var DIALOG_ID = 'bookingDialog';
-  var IFRAME_ID = 'bookingIframe';
-  var BOOKING_URL = 'https://feedback.stardentalclinic.uz/?embed=1';
-  var FEEDBACK_ORIGIN = 'https://feedback.stardentalclinic.uz';
   var METRIKA_COUNTER_ID = 106803946;
   var PHONE_URL = 'tel:+998909584154';
   var DEFAULT_INSTAGRAM_URL = 'https://www.instagram.com/stardentalclinic.uz';
+  var TELEGRAM_BOT_URL = 'https://t.me/BelgiApp_bot?start=book_dae70b36-3944-4fc8-a824-f36fcfdc13a3';
 
   function trackAnalyticsEvent(eventName, eventParams) {
     if (typeof window.gtag === 'function') {
@@ -95,138 +91,13 @@
     }
   }
 
-  function buildBookingLayer() {
-    var overlay = document.createElement('div');
-    overlay.className = 'booking-overlay';
-    overlay.id = OVERLAY_ID;
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(overlay);
-
-    var dialog = document.createElement('div');
-    dialog.className = 'booking-dialog';
-    dialog.id = DIALOG_ID;
-    dialog.setAttribute('role', 'dialog');
-    dialog.setAttribute('aria-modal', 'true');
-    dialog.setAttribute('aria-label', '\u0424\u043e\u0440\u043c\u0430 \u0437\u0430\u043f\u0438\u0441\u0438');
-
-    var iframe = document.createElement('iframe');
-    iframe.className = 'booking-dialog__iframe';
-    iframe.id = IFRAME_ID;
-    iframe.src = BOOKING_URL;
-    iframe.title = '\u0424\u043e\u0440\u043c\u0430 \u0437\u0430\u043f\u0438\u0441\u0438 Star Dental Clinic';
-    iframe.loading = 'lazy';
-
-    dialog.appendChild(iframe);
-    document.body.appendChild(dialog);
-  }
-
-  function ensureBookingLayer() {
-    if (!document.getElementById(OVERLAY_ID) || !document.getElementById(DIALOG_ID)) {
-      buildBookingLayer();
-    }
-  }
-
-  function isBookingOpen() {
-    var overlay = document.getElementById(OVERLAY_ID);
-    var dialog = document.getElementById(DIALOG_ID);
-    return !!(overlay && dialog && overlay.classList.contains('is-open') && dialog.classList.contains('is-open'));
-  }
-
-  function closeBooking() {
-    var overlay = document.getElementById(OVERLAY_ID);
-    var dialog = document.getElementById(DIALOG_ID);
-
-    if (!overlay || !dialog) {
-      return;
-    }
-
-    overlay.classList.remove('is-open');
-    dialog.classList.remove('is-open');
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('booking-open');
-  }
-
-  function openBooking() {
-    ensureBookingLayer();
-
-    var overlay = document.getElementById(OVERLAY_ID);
-    var dialog = document.getElementById(DIALOG_ID);
-    if (!overlay || !dialog) {
-      return;
-    }
-
-    overlay.classList.add('is-open');
-    dialog.classList.add('is-open');
-    overlay.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('booking-open');
-    trackAnalyticsEvent('booking_modal_open', {
-      event_category: 'engagement',
-      event_label: window.location.pathname
-    });
-  }
-
-  function toggleBooking() {
-    if (isBookingOpen()) {
-      closeBooking();
-    } else {
-      openBooking();
-    }
-  }
-
-  function getBookingIframe() {
-    return document.getElementById(IFRAME_ID);
-  }
-
-  function bindIframeHeightEvents() {
-    window.addEventListener('message', function (event) {
-      if (event.origin !== FEEDBACK_ORIGIN) {
-        return;
-      }
-
-      var data = event.data;
-      if (!data || data.type !== 'feedback:height' || typeof data.height !== 'number') {
-        return;
-      }
-
-      var iframe = getBookingIframe();
-      if (!iframe) {
-        return;
-      }
-
-      var maxH = Math.floor(window.innerHeight * 0.9);
-      var h = Math.min(Math.max(280, Math.floor(data.height)), maxH);
-      iframe.style.height = h + 'px';
-    });
-
-    window.addEventListener('resize', function () {
-      var iframe = getBookingIframe();
-      if (!iframe) {
-        return;
-      }
-
-      var currentHeight = parseInt(iframe.style.height, 10);
-      if (Number.isNaN(currentHeight)) {
-        return;
-      }
-
-      var maxH = Math.floor(window.innerHeight * 0.9);
-      if (currentHeight > maxH) {
-        iframe.style.height = maxH + 'px';
-      }
-    });
-  }
-
-  function bindModalEvents() {
-    var overlay = document.getElementById(OVERLAY_ID);
-    if (overlay) {
-      overlay.addEventListener('click', function () {
-        closeBooking();
-      });
-    }
-
+  function bindContactEvents() {
     document.addEventListener('click', function (event) {
-      if (event.target.closest('.booking-fab')) {
-        toggleBooking();
+      if (event.target.closest('.telegram-bot-fab')) {
+        trackAnalyticsEvent('click_telegram_bot', {
+          event_category: 'contact',
+          event_label: window.location.pathname
+        });
         return;
       }
 
@@ -239,36 +110,32 @@
         trackAnalyticsEvent('click_instagram', { event_category: 'contact' });
       }
     });
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && isBookingOpen()) {
-        closeBooking();
-      }
-    });
   }
 
-  function ensureBookingButtons(containers) {
+  function ensureTelegramBotButtons(containers) {
     containers.forEach(function (container) {
-      if (container.querySelector('.booking-fab')) {
+      if (container.querySelector('.telegram-bot-fab')) {
         return;
       }
 
-      var bookingButton = createFabButton(
-        'button',
+      var telegramBotButton = createFabButton(
+        'a',
         {
-          type: 'button',
-          class: 'booking-fab',
-          'aria-label': '\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f'
+          href: TELEGRAM_BOT_URL,
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          class: 'telegram-bot-fab',
+          'aria-label': '\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f \u0447\u0435\u0440\u0435\u0437 Telegram'
         },
         '/icons/telegram.png',
-        '\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f'
+        '\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f \u0447\u0435\u0440\u0435\u0437 Telegram'
       );
 
-      container.appendChild(bookingButton);
+      container.appendChild(telegramBotButton);
     });
   }
 
-  function initBookingModal() {
+  function initFloatingButtons() {
     if (!document.body) {
       return;
     }
@@ -280,15 +147,13 @@
       ensureBaseButtons(container, instagramUrl);
     });
 
-    ensureBookingButtons(containers);
-    ensureBookingLayer();
-    bindIframeHeightEvents();
-    bindModalEvents();
+    ensureTelegramBotButtons(containers);
+    bindContactEvents();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initBookingModal);
+    document.addEventListener('DOMContentLoaded', initFloatingButtons);
   } else {
-    initBookingModal();
+    initFloatingButtons();
   }
 })();

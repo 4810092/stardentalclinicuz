@@ -343,9 +343,8 @@ a:hover {
     height: 24px;
 }
 
-/* Booking modal and floating button compatibility */
-.floating-buttons a,
-.floating-buttons button {
+/* Floating button compatibility */
+.floating-buttons a {
     width: 56px;
     height: 56px;
     background: linear-gradient(145deg, var(--silver-light), var(--silver-accent));
@@ -360,74 +359,18 @@ a:hover {
     padding: 0;
 }
 
-.floating-buttons a:hover,
-.floating-buttons button:hover {
+.floating-buttons a:hover {
     transform: scale(1.12);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
     filter: brightness(1.03);
 }
 
-.floating-buttons button:focus-visible,
 .floating-buttons a:focus-visible {
     outline: 2px solid var(--silver-dark);
     outline-offset: 3px;
 }
 
-.floating-buttons button img,
 .floating-buttons a img {
     width: 24px;
     height: 24px;
-}
-
-/* Booking overlay + iframe-only dialog */
-body.booking-open {
-    overflow: hidden;
-}
-
-.booking-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: 2000;
-    display: none;
-}
-
-.booking-overlay.is-open {
-    display: block;
-}
-
-.booking-dialog {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: min(900px, calc(100vw - 32px));
-    z-index: 2100;
-    display: none;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-}
-
-.booking-dialog.is-open {
-    display: block;
-}
-
-.booking-dialog__iframe {
-    width: 100%;
-    height: 520px;
-    border: 0;
-    display: block;
-    background: transparent;
-    border-radius: 16px;
-}
-
-@media (max-width: 768px) {
-    .booking-dialog {
-        width: calc(100vw - 16px);
-    }
-
-    .booking-dialog__iframe {
-        border-radius: 14px;
-    }
 }
